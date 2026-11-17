@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://mussirin.github.io/mussirindev-website/sitemap.xml
