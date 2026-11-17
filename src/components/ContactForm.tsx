@@ -122,6 +122,8 @@ export function ContactForm({ dict }: ContactFormProps) {
       }
 
       if (
+        response.status === 404 ||
+        response.status === 405 ||
         response.status === 503 ||
         data?.code === 'EMAIL_NOT_CONFIGURED'
       ) {

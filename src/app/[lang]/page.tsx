@@ -79,7 +79,7 @@ export default async function HomePage({
           className="pointer-events-none absolute inset-0 hidden dark:block"
         >
           <img
-            src="/images/hero-artwork.jpg"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/hero-artwork.jpg`}
             alt=""
             className="h-full w-full object-cover object-center opacity-25 mix-blend-screen"
           />

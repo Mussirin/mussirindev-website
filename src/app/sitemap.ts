@@ -3,6 +3,8 @@ import { getAllProjects } from '@/data/projects';
 import { locales } from '@/i18n/config';
 import { getSiteUrl } from '@/lib/seo';
 
+export const dynamic = 'force-static';
+
 const STATIC_ROUTES = [
   '',
   '/projects',
