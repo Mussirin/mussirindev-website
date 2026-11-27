@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Wattsir</title>
+  <style>
+    :root {
+      --bg-deep: #081322;
+      --card-bg: #0F1F35;
+      --border: #1D3554;
+      --text-main: #EAF4FF;
+      --text-muted: #93ADC8;
+      --accent: #00E676;
+      --accent-cyan: #00D4FF;
+      --accent-soft: #132C47;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 860px;
+      margin: 36px auto;
+      padding: 0 20px 56px;
+      line-height: 1.68;
+      color: var(--text-main);
+      background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.08), transparent 45%),
+                  radial-gradient(circle at top left, rgba(0, 230, 118, 0.08), transparent 40%),
+                  var(--bg-deep);
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-left: 16px;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 36px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.85rem;
+      line-height: 1.25;
+    }
+    h2 {
+      color: var(--accent-cyan);
+      margin-top: 28px;
+      font-size: 1.22rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    p, li {
+      color: var(--text-main);
+    }
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    code {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    a {
+      color: var(--accent-cyan);
+    }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+    @media (max-width: 600px) {
+      .card {
+        padding: 24px 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-bar">
+    <a class="brand" href="./index.html">⚡ Wattsir</a>
+    <div class="nav-links">
+      <a href="#tr-section">Türkçe (TR)</a>
+      <a href="./index.html">Support / Destek</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1>Privacy Policy – Wattsir</h1>
+    <p class="meta">
+      <strong>Effective Date:</strong> November 28, 2026 &nbsp;|&nbsp;
+      <strong>Package ID:</strong> <code>com.wattsir.app</code> &nbsp;|&nbsp;
+      <strong>Developer:</strong> Mustafa Şirin (<code>mussirindev</code>) &nbsp;|&nbsp;
+      <strong>Contact:</strong> <a href="mailto:mustafasirin42@gmail.com">mustafasirin42@gmail.com</a>
+    </p>
+
+    <h2>1. Overview &amp; 100% Offline-First Design</h2>
+    <p>
+      <strong>Wattsir</strong> (<em>Smarter Energy. A Greener Tomorrow.</em>) is an offline-first household electricity consumption and cost calculator supporting 13 languages and 25 global currencies.
+    </p>
+    <ul>
+      <li><strong>No User Account Required:</strong> You do not need to create an account, log in, or submit an email address or password to use Wattsir.</li>
+      <li><strong>No Developer Cloud Backend:</strong> Wattsir operates without external developer servers. Your appliances, tariff rates, and calculation records are never uploaded to developer cloud databases.</li>
+    </ul>
+
+    <h2>2. Local On-Device SQLite Storage</h2>
+    <p>All user-entered energy records remain exclusively on your device inside a local SQLite database managed via Drift:</p>
+    <ul>
+      <li><strong>Application Preferences (<code>AppSettingsTable</code>):</strong> Electricity price per kWh, selected currency, decimal precision, theme mode, language choice, and onboarding status.</li>
+      <li><strong>Saved Appliances (<code>SavedDevicesTable</code>):</strong> Appliance names, categories, calculation modes (Continuous, Per Cycle, Flexible), wattage ratings, durations, cycles, custom notes, and timestamps.</li>
+      <li><strong>Calculation History Snapshots (<code>CalculationHistoryTable</code>):</strong> Immutable energy (kWh) and cost results saved by you alongside the active tariff rate at the time of calculation.</li>
+      <li><strong>Local Pro Entitlement Cache (<code>EntitlementCacheTable</code>):</strong> Locally cached product identifier, verification source, purchase timestamp, and expiration date so Wattsir Pro continues working offline.</li>
+    </ul>
+    <p>
+      <strong>Android Device Backup Exclusion:</strong> Android manifest rules (<code>android:allowBackup="false"</code> and <code>android:fullBackupContent="false"</code>) prevent automatic OS cloud backups of Wattsir's local SQLite database without your explicit action.
+    </p>
+
+    <h2>3. Manual User-Initiated JSON Backup &amp; Restore</h2>
+    <p>Wattsir provides a strictly manual, user-triggered JSON backup tool (<code>wattsir_backup</code> format):</p>
+    <ul>
+      <li>A backup file is generated only when you explicitly tap Export or Share Backup in Settings.</li>
+      <li>Exported files contain your local settings, saved appliances, and calculation history — never payment credentials or Pro entitlement tokens.</li>
+      <li>You maintain full control over where exported files are saved or shared via your operating system's native file picker or share sheet.</li>
+    </ul>
+
+    <h2>4. Advertising &amp; Consent – Free Version Only</h2>
+    <p>
+      The Free version of Wattsir integrates the <strong>Google Mobile Ads (AdMob) SDK</strong> (including Android <code>com.google.android.gms.permission.AD_ID</code> permission) to display non-intrusive ads when online:
+    </p>
+    <ul>
+      <li><strong>Ad-Free Calculators &amp; Offline Support:</strong> Ads never appear on the active Calculator or Calculation Result screens, and offline features never block waiting for ad networks.</li>
+      <li><strong>Wattsir Pro (Ad-Free):</strong> Upgrading to Wattsir Pro disables all ad requests and removes all ads from the application.</li>
+      <li><strong>Data Processed by Google AdMob:</strong> While online on the Free tier, Google AdMob may process device and advertising identifiers (Advertising ID / IDFA), coarse IP-based location, ad impression and interaction events, and performance/crash diagnostics.</li>
+      <li><strong>User Consent:</strong> Where required by regional regulations (GDPR in the EEA/UK and US state privacy frameworks), Google's User Messaging Platform (UMP) consent choices are respected. Review Google's privacy disclosures at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</li>
+    </ul>
+
+    <h2>5. In-App Purchases &amp; Subscriptions</h2>
+    <p>
+      Wattsir offers optional paid upgrades (**Wattsir Pro** via <code>wattsir_pro_monthly</code>, <code>wattsir_pro_annual</code>, and one-time <code>wattsir_pro_lifetime</code>) processed officially through <strong>Google Play Billing</strong> and <strong>Apple StoreKit</strong>.
+    </p>
+    <ul>
+      <li>Wattsir never collects, views, or stores your credit card numbers, billing address, or store passwords.</li>
+      <li>Purchase tokens are used strictly to verify and restore Pro entitlements with Google Play or Apple App Store.</li>
+    </ul>
+
+    <h2>6. Data Retention, Deletion &amp; User Control</h2>
+    <p>Because Wattsir stores no personal account data on developer servers, you have instant control over all data on your device:</p>
+    <ul>
+      <li>Delete individual saved appliances or calculation history entries directly inside the app.</li>
+      <li>Clear all calculation history in one step or overwrite data with a verified JSON backup.</li>
+      <li>Clear app storage in your OS settings or uninstall Wattsir to permanently delete the local SQLite database and all stored preferences.</li>
+    </ul>
+
+    <h2>7. Utility Estimation Disclaimer &amp; Children's Privacy</h2>
+    <p>
+      Wattsir is an informational household utility estimation calculator designed to help users model appliance energy costs using typical ratings and user-entered tariffs. It is <strong>not an official utility billing meter</strong> and provides no banking or financial services.
+    </p>
+    <p>
+      Wattsir is intended for general audiences aged <strong>13 and older</strong> and does not knowingly collect personal information from children under 13.
+    </p>
+
+    <hr id="tr-section" />
+
+    <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni – Wattsir (TR)</h1>
+    <p class="meta">
+      <strong>Yürürlük Tarihi:</strong> 28 Kasım 2026 &nbsp;|&nbsp;
+      <strong>Uygulama Kimliği:</strong> <code>com.wattsir.app</code> &nbsp;|&nbsp;
+      <strong>Geliştirici:</strong> Mustafa Şirin (<code>mussirindev</code>) &nbsp;|&nbsp;
+      <strong>İletişim:</strong> <a href="mailto:mustafasirin42@gmail.com">mustafasirin42@gmail.com</a>
+    </p>
+
+    <h2>1. Genel Bakış ve %100 Çevrimdışı Öncelikli Mimari</h2>
+    <p>
+      <strong>Wattsir</strong> (<em>Daha Akıllı Enerji. Daha Yeşil Bir Yarın.</em>), 13 dil ve 25 para birimi desteğiyle ev aletlerinin elektrik tüketimini ve maliyetini hesaplamanızı sağlayan çevrimdışı öncelikli bir yardımcı uygulamadır.
+    </p>
+    <ul>
+      <li><strong>Hesap veya Üyelik Yoktur:</strong> Wattsir'i kullanmak için kayıt olmanız, e-posta adresi vermeniz veya giriş yapmanız gerekmez.</li>
+      <li><strong>Geliştirici Bulut Sunucusu Yoktur:</strong> Cihazlarınız, elektrik tarifeleriniz ve hesaplama geçmişiniz geliştiriciye ait hiçbir harici sunucuya gönderilmez.</li>
+    </ul>
+
+    <h2>2. Cihaz İçi Yerel SQLite Depolama</h2>
+    <p>Girdiğiniz tüm veriler yalnızca kendi cihazınızdaki yerel SQLite veritabanında (Drift) tutulur:</p>
+    <ul>
+      <li><strong>Uygulama Ayarları (<code>AppSettingsTable</code>):</strong> kWh birim fiyatınız, para birimi seçiminiz, ondalık hassasiyetiniz, tema ve dil tercihleriniz.</li>
+      <li><strong>Kayıtlı Cihazlar (<code>SavedDevicesTable</code>):</strong> Eklediğiniz cihaz adları, kategoriler, hesaplama modları, watt/çevrim değerleri ve notlarınız.</li>
+      <li><strong>Hesaplama Geçmişi (<code>CalculationHistoryTable</code>):</strong> Kaydettiğiniz sabit kWh ve maliyet sonuçları ile hesaplama anındaki tarife bilgileri.</li>
+      <li><strong>Pro Yetki Önbelleği (<code>EntitlementCacheTable</code>):</strong> Çevrimdışı Pro kullanımının sürmesi için yalnızca cihazınızda tutulan ürün kimliği ve doğrulama özeti.</li>
+    </ul>
+    <p>
+      Android tarafında <code>android:allowBackup="false"</code> ve <code>android:fullBackupContent="false"</code> tanımları sayesinde yerel veritabanınız izniniz olmadan otomatik bulut yedeklemesine dahil edilmez.
+    </p>
+
+    <h2>3. Manuel Kullanıcı Yedeklemesi ve Geri Yükleme</h2>
+    <p>
+      Yalnızca Ayarlar menüsünden kendiniz başlattığınızda cihaz ayarlarınızı, cihazlarınızı ve hesaplama geçmişinizi içeren bir <code>wattsir_backup</code> JSON dosyası oluşturulur. Bu dosya ödeme veya kart bilgisi içermez; dosyanın nereye kaydedileceği tamamen cihazınızın dosya/paylaşım ekranından sizin tarafınızdan belirlenir.
+    </p>
+
+    <h2>4. Reklamlar ve Onay – Yalnızca Ücretsiz Sürüm</h2>
+    <ul>
+      <li>Ücretsiz sürümde cihaz çevrimiçiyken yalnızca hesaplama dışı ekranlarda <strong>Google Mobile Ads (AdMob) SDK</strong> (<code>com.google.android.gms.permission.AD_ID</code> izni dahil) aracılığıyla reklam gösterilebilir; hesaplayıcı ve sonuç ekranları reklamsızdır.</li>
+      <li>Çevrimiçi reklam gösterimi sırasında Google AdMob; cihaz/reklam kimliği, IP üzerinden kaba konum, reklam görüntüleme/etkileşim olayları ve performans/çökme tanılama verilerini işleyebilir. Bölgesel gizlilik kurallarına (GDPR/KVKK/UMP) uygun kullanıcı onayları dikkate alınır.</li>
+      <li><strong>Wattsir Pro</strong> sürümünde tüm reklam istekleri ve reklam gösterimleri tamamen kapatılır.</li>
+    </ul>
+
+    <h2>5. Uygulama İçi Satın Almalar ve Abonelikler</h2>
+    <p>
+      İsteğe bağlı Pro planları (<code>wattsir_pro_monthly</code>, <code>wattsir_pro_annual</code>, <code>wattsir_pro_lifetime</code>) doğrudan <strong>Google Play Faturalandırma</strong> veya <strong>Apple StoreKit</strong> üzerinden işlenir. Wattsir kredi kartı veya ödeme bilgilerinizi görmez ve saklamaz; yalnızca satın alım doğrulaması ve geri yükleme işlemleri gerçekleştirilir.
+    </p>
+
+    <h2>6. Veri Saklama, Silme ve Çocukların Gizliliği</h2>
+    <p>
+      Geliştirici sunucularında kullanıcı hesabı veya kişisel veri tutulmadığından tüm kontrol sizdedir: uygulama içinden tekil kayıtları ya da geçmişi silebilir, sistem ayarlarından uygulama verilerini temizleyebilir veya uygulamayı kaldırarak tüm yerel SQLite verilerini kalıcı olarak silebilirsiniz.
+    </p>
+    <p>
+      Wattsir resmi elektrik sayacı veya finansal kuruluş hizmeti değildir; referans tüketim tahmini sunar. Uygulama <strong>13 yaş ve üzeri</strong> genel kitleye yöneliktir ve 13 yaşından küçük çocuklardan bilerek veri toplamaz. Gizlilik sorularınız için <a href="mailto:mustafasirin42@gmail.com">mustafasirin42@gmail.com</a> adresinden iletişime geçebilirsiniz.
+    </p>
+  </div>
+</body>
+</html>
